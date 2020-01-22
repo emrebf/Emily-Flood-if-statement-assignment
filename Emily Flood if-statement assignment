@@ -1,0 +1,29 @@
+//Emily Flood
+//Jan 21st, 2020
+
+//this code is supposed to make the LEDs react diffferently
+//based on the amount of light the light sensor detects.
+
+void setup() {
+  pinMode(13, OUTPUT); //assign output to pin 13
+  pinMode(12, OUTPUT); //assignt output to pin 12
+  pinMode(11, OUTPUT); //assign output to pin 11
+  Serial.begin(9600); //this generates the current number based on the amount of light that the light sensor detects
+}
+
+void loop() {
+  Serial.println(analogRead(5)); //reads the numbers in serial
+  if (analogRead(5) < 900) { //if the number it reads is less than 900...
+    digitalWrite (13, HIGH); //LED connected to pin 13 will light up
+    digitalWrite(12, LOW);
+    digitalWrite(11, LOW);
+  } else if (analogRead(5) < 1000) { //if the number it reads is less than 1000...
+    digitalWrite(13, LOW);
+    digitalWrite(12, HIGH); //LED connected to pin 12 will light up
+    digitalWrite(11, LOW);
+  } else if (analogRead(5) > 1000) {//if the number it reads is greater than 1000...
+    digitalWrite(13, LOW);
+    digitalWrite(12, LOW);
+    digitalWrite(11, HIGH); //LED connected to pin 11 will light up
+  }
+}
